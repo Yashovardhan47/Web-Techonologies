@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Survey Form</title>
+    <style>
+        form{
+            margin-left:400px;
+            margin-right: 400px;
+            background-color: aliceblue;
+        }
+    </style>
+</head>
+<body style="background-color: beige;">
+    <h1 style="color:blue;background-color: yellow;text-align: center;"><i>Survey Form</i></h1>
+    <form>
+        <fieldset><legend>User Information</legend>
+        <h3>Personal Information</h3>
+        <label for="Name">Full Name :</label>
+        <input type="text" id="name" name="Name" maxlength="50" placeholder="Enter your Name" aria-required="true" required><br>
+        <label for="email">Email :</label>
+        <input type="email" id="email" name="email" placeholder="Enter your mail" aria-required="true" required><br>
+        <label for="phone">Phone.No :</label>
+        <input type="tel" id="phone" name="phone" maxlength="10" placeholder="Enter your phone.no"><br>
+        <label for="age">Age :</label>
+        <input type="number" id="age" name="age" placeholder="Enter your age" aria-required="true" required><br>
+        <label for="gender">Gender :</label><br>
+        <input type="radio" name="gender" value="Male">Male
+        <input type="radio" name="gender" value="Female">Female
+        <input type="radio" name="gender" value="Others">Others<br>
+        <label for="Location">Location :</label>
+        <input type="text" id="Location" name="Location" placeholder="Address" aria-required="true" required><br>
+        <label for="job">Occupation :</label>
+        <input type="text" id="job" name="Occupation" placeholder="Your Occupation" aria-required="true" required>
+        <h3>Awareness</h3>
+        <label for="hear">How do you hear about us?</label><br>
+        <input type="checkbox" name="hear" value="Social Media">Social Media<br>
+         <input type="checkbox" name="hear" value="Friend">Friend<br>
+         <input type="checkbox" name="hear" value="Website">Website<br>
+         <input type="checkbox" name="hear" value="Advertisement">Advertisement<br>
+         <input type="checkbox" name="hear" value="Others">Others<br>
+         <label for="service">How do you hear about us?</label><br>
+        <input type="radio" name="service" value="Daily">Daily<br>
+         <input type="radio" name="service" value="Weekly">Weekly<br>
+         <input type="radio" name="service" value="Monthly">Monthly<br>
+         <input type="radio" name="service" value="Rarely">Rarely<br>
+         <label>Which service did you use?</label><br>
+         <textarea rows="5" cols="50"></textarea><br>
+         <h4>Rating</h4>
+         <label for="rating">How staisfied are you with service? </label><br>
+         <input type="checkbox" name="rating" value="1">⭐<br>
+         <input type="checkbox" name="rating" value="2">⭐<br>
+         <input type="checkbox" name="rating" value="3">⭐<br>
+         <input type="checkbox" name="rating" value="4">⭐<br>
+         <input type="checkbox" name="rating" value="4">⭐<br>
+         <input type="button" value="submit">
+        </fieldset>
+    </form>
+</body>
+</html>
