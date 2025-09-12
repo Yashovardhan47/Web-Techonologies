@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer feedback Form</title>
+    <style>
+        form{
+            margin-right: 600px;
+            background-color: pink;
+        }
+        img{
+            margin-left: 600px;
+        }
+    </style>
+</head>
+<body style="background-color: navajowhite;">
+    <h1 style="color:blue;background-color: yellow; text-align: center;font-family: Verdana, Geneva, Tahoma, sans-serif;"><i>Customer feedback Form</i></h1>
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQKGZkIGpWDTVcc3dpHWqlbLGPN-HUm51ozVQ&s" alt="Image">
+    <form>
+        <fieldset><legend><i>Feedback Form</i></legend>
+         <label for="name"><i>Full Name</i>(optional) :</label>
+         <input type="text" id="name" name="User Name" placeholder="Enter ur full name"><br>
+         <label for="email"><i>Email</i>(Optional) :</label>
+         <input type="email" id="email" name="email" placeholder="Enter ur mail" ><br>
+         <label for="Phone"><i>Phone</i>(optional) :</label>
+         <input type="tel" id="phone" maxlength="10" name="phone" pattern="[0-9]{10}" placeholder="Enter ur phone.no"><br>
+         <label for="which_product"><i>which product did you you purchse? :</i></label>
+         <input type="text" id="Which_product" name="which_product" placeholder="ur purchase" required><br>
+         <label for="date"><i>Purchse Date :</i></label>
+         <input type="date" id="date" name="purchase_date"><br><br>
+         <label for="where_purchased"><i>Where did you purchase the product? :</i></label>
+         <ul>
+            <li><input type="checkbox" name="where_purchased" value="Onlinr(Website)">Onlinr(Website)</li>
+            <li><input type="checkbox" name="where_purchased" value="Online (E-commerse: Amazon/Flipcart/etc.)">Online (E-commerse: Amazon/Flipcart/etc.)</li>
+            <li><input type="checkbox" name="where_purchased" value="Retail Store">Retail Store</li>
+            <li><input type="checkbox" name="where_purchased" value="Others">Others</li>
+         </ul><br>
+           <h3>Product Experience</h3>
+           <label for="How_satisfied"><i>How satisfied are you with the product?</i></label>
+           <ul>
+            <li><input type="checkbox" name="How_satisfied" value="Very Satisfied">Very Satisfied</li>
+            <li><input type="checkbox" name="How_satisfied" value="Satisfied">Satisfied</li>
+            <li><input type="checkbox" name="How_satisfied" value="neutral">Very Satisfied</li>
+            <li><input type="checkbox" name="How_satisfied" value="Dissatisfied">Dissatisfied</li>
+            <li><input type="checkbox" name="How_satisfied" value="Very Dissatisfied">Very Dissatisfied</li>
+           </ul><br>
+           <label for="Often_use"><i>How often do you use the product?</i></label>
+           <ul>
+            <li><input type="checkbox" name="Often_use" value="Daily">VDaily</li>
+            <li><input type="checkbox" name="Often_use" value="Weekly">Weekly</li>
+            <li><input type="checkbox" name="Often_use" value="Occasionally">Occasionally</li>
+            <li><input type="checkbox" name="Often_use" value="Rarely">Rarely</li>
+           </ul><br>
+           <label for="stars"><i>Product Quality Rating(1-5)</i></label><br>
+           <input type="checkbox" id="stars" name="rating" value="1">⭐
+           <input type="checkbox" id="stars" name="rating" value="2">⭐
+           <input type="checkbox" id="stars" name="rating" value="3">⭐
+           <input type="checkbox" id="stars" name="rating" value="4">⭐
+           <input type="checkbox" id="stars" name="rating" value="5">⭐<br>
+                      <label for="stars"><i>Value for Money Rating(1-5)</i></label><br>
+           <input type="checkbox" id="stars" name="rating" value="1">⭐
+           <input type="checkbox" id="stars" name="rating" value="2">⭐
+           <input type="checkbox" id="stars" name="rating" value="3">⭐
+           <input type="checkbox" id="stars" name="rating" value="4">⭐
+           <input type="checkbox" id="stars" name="rating" value="5">⭐<br>
+                      <label for="stars"><i>Ease of Use Rating(1-5)</i></label><br>
+           <input type="checkbox" id="stars" name="rating" value="1">⭐
+           <input type="checkbox" id="stars" name="rating" value="2">⭐
+           <input type="checkbox" id="stars" name="rating" value="3">⭐
+           <input type="checkbox" id="stars" name="rating" value="4">⭐
+           <input type="checkbox" id="stars" name="rating" value="5">⭐<br>
+           <h3>Delivery & Support</h3>
+           <label for="experience"><i>How was the delivery experiencr?</i></label>
+           <ul>
+            <li><input type="radio" name="experience" value="Excellent">Excellent</li>
+            <li><input type="radio" name="experience" value="Good">Good</li>
+            <li><input type="radio" name="experience" value="Average">Average</li>
+            <li><input type="radio" name="experience" value="Poor">Poor</li>
+           </ul><br>
+            <label for="Support"><i>Did you contact customer support?</i></label>
+           <ul>
+            <li><input type="radio" name="Support" value="Yes">Yes</li>
+            <li><input type="radio" name="Support" value="No">No</li>
+            </ul><br>
+             <label for="satisfy"><i>If yes,how statisfied were you with the support?</i></label>
+             <ul>
+            <li><input type="radio" name="satisfy" value="Very Satisfied">Very Satisfied</li>
+            <li><input type="radio" name="satisfy" value="Satisfied">Satisfied</li>
+            <li><input type="radio" name="satisfy" value="neutral">Very Satisfied</li>
+            <li><input type="radio" name="satisfy" value="Dissatisfied">Dissatisfied</li>
+            <li><input type="radio" name="satisfy" value="Very Dissatisfied">Very Dissatisfied</li>
+           </ul><br>
+           <h3>Suggestions</h3>
+           <label><i>What features do you like most about the product?</i></label><br>
+           <TEXTarea rows="5" cols="80"></TEXTarea><br>
+           <label>What improvements would you suggest?</label><br>
+           <TEXTarea rows="5" cols="80"></TEXTarea><br>
+           <label for="rec">Would you recommand this product to others?</label><br>
+           <input type="radio" name="rec" value="Yes">Yes<br>
+           <input type="radio" name="rec" value="No">No<br>
+           <label>Any additional comments or suggestions :</label><br>
+           <textarea rows="5" cols="80"></textarea><br>
+           <h3>About You(Optional)</h3>
+           <label for="age">Age :</label>
+           <input type="number" id="age" name="age" placeholder="enter ur age"><br>
+           <label for="gender">Gender :</label>
+           <input type="radio" name="gender" value="Male">Male
+           <input type="radio" name="gender" value="Female">Female
+           <input type="radio" name="gender" value="Others">Others
+        </fieldset>
+    </form>
+    <h3 style="color:aliceblue; text-align: center;">Thank You</h3>
+</body>
+</html>
