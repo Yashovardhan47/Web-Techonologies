@@ -1,2 +1,2 @@
 # Web-Techonologies
-Mini Projects with front-end
+Mini Projects with front-end(HTML, CSS, JS)
