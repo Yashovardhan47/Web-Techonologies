@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animated Quiz</title>
+
+    <style>
+        body {
+            font-family: "Poppins", sans-serif;
+            background: linear-gradient(135deg, #2a2a72, #009ffd);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .quiz-container {
+            width: 450px;
+            background: white;
+            padding: 25px;
+            border-radius: 20px;
+            box-shadow: 0 0 25px #0004;
+            animation: popup 0.6s ease-out;
+        }
+
+        @keyframes popup {
+            0% { transform: scale(0.7); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        .question {
+            font-size: 22px;
+            margin-bottom: 20px;
+            font-weight: 600;
+            animation: fade 0.6s;
+        }
+
+        @keyframes fade {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .option {
+            width: 90%;
+            padding: 14px;
+            margin: 10px 0;
+            background: #f3f3f3;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 17px;
+            transition: 0.25s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .option:hover {
+            background: #c0f6f8;
+            transform: translateX(5px);
+        }
+
+        /* Ripple Animation */
+        .option::after {
+            content: "";
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: rgba(255,255,255,0.6);
+            border-radius: 50%;
+            transform: scale(0);
+            opacity: 0;
+        }
+
+        .option.click::after {
+            animation: ripple 0.4s linear forwards;
+        }
+
+        @keyframes ripple {
+            0% {
+                transform: scale(0);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(20);
+                opacity: 0;
+            }
+        }
+
+        .correct {
+            background: #4CAF50 !important;
+            color: white;
+            box-shadow: 0 0 15px #4caf5077;
+        }
+
+        .wrong {
+            background: #E53935 !important;
+            color: white;
+            box-shadow: 0 0 15px #e5393577;
+        }
+
+        #next-btn {
+            padding: 12px 22px;
+            background: #009ffd;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            margin-top: 20px;
+            font-size: 18px;
+            opacity: 0;
+            pointer-events: none;
+            transition: 0.3s;
+        }
+
+        #next-btn.show {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        #next-btn:hover {
+            background: #007acc;
+            transform: scale(1.05);
+        }
+
+        #result {
+            font-size: 26px;
+            text-align: center;
+            animation: fade 0.6s;
+            font-weight: 700;
+        }
+
+        button.restart {
+            margin-top: 15px;
+            padding: 12px 25px;
+            background: #ff7f50;
+            border: none;
+            color: white;
+            border-radius: 10px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button.restart:hover {
+            background: #ff5722;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="quiz-container">
+        <div id="quiz">
+            <div id="question" class="question"></div>
+            <div id="options"></div>
+            <button id="next-btn" onclick="nextQuestion()">Next →</button>
+        </div>
+    </div>
+
+    <script>
+        const quizData = [
+            {
+                question: "What does HTML stand for?",
+                options: [
+                    "Hyper Text Markup Language",
+                    "Home Tool Modern Language",
+                    "Hyperlinks Text Madeup Language",
+                    "Hyper Technical Markup Level"
+                ],
+                answer: "Hyper Text Markup Language"
+            },
+            {
+                question: "Which programming language runs in the browser?",
+                options: ["C++", "Python", "JavaScript", "Java"],
+                answer: "JavaScript"
+            },
+            {
+                question: "CSS is used for?",
+                options: [
+                    "Structuring web pages",
+                    "Adding styles to web pages",
+                    "Running server code",
+                    "Database management"
+                ],
+                answer: "Adding styles to web pages"
+            }
+        ];
+
+        let index = 0;
+        let score = 0;
+
+        function loadQuestion() {
+            document.getElementById("next-btn").classList.remove("show");
+
+            const q = quizData[index];
+            document.getElementById("question").innerText = q.question;
+
+            const optionsDiv = document.getElementById("options");
+            optionsDiv.innerHTML = "";
+
+            q.options.forEach(opt => {
+                const btn = document.createElement("div");
+                btn.innerText = opt;
+                btn.className = "option";
+                btn.onclick = (e) => selectAnswer(btn, q.answer, e);
+                optionsDiv.appendChild(btn);
+            });
+        }
+
+        function selectAnswer(button, correctAnswer, event) {
+            const options = document.querySelectorAll(".option");
+
+            options.forEach(opt => opt.onclick = null);
+
+            // Ripple effect
+            const x = event.clientX - button.getBoundingClientRect().left;
+            const y = event.clientY - button.getBoundingClientRect().top;
+            button.style.setProperty("--x", x + "px");
+            button.style.setProperty("--y", y + "px");
+            button.classList.add("click");
+
+            if (button.innerText === correctAnswer) {
+                button.classList.add("correct");
+                score++;
+            } else {
+                button.classList.add("wrong");
+
+                options.forEach(o => {
+                    if (o.innerText === correctAnswer)
+                        o.classList.add("correct");
+                });
+            }
+
+            document.getElementById("next-btn").classList.add("show");
+        }
+
+        function nextQuestion() {
+            index++;
+
+            if (index < quizData.length) {
+                loadQuestion();
+            } else {
+                showResult();
+            }
+        }
+
+        function showResult() {
+            document.getElementById("quiz").innerHTML = `
+                <h2 id="result">🎉 Your Score: ${score}/${quizData.length}</h2>
+                <button class="restart" onclick="restartQuiz()">Restart Quiz</button>
+            `;
+        }
+
+        function restartQuiz() {
+            index = 0;
+            score = 0;
+            location.reload();
+        }
+
+        loadQuestion();
+    </script>
+
+</body>
+</html>
